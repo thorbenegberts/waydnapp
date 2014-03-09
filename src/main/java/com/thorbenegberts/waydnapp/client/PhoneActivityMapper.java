@@ -4,22 +4,32 @@ package com.thorbenegberts.waydnapp.client;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
-
+import com.thorbenegberts.waydnapp.client.activities.day.DayAddActivity;
+import com.thorbenegberts.waydnapp.client.activities.day.DayAddPlace;
 
 /**
- * 
+ * @author thorbenegberts
  */
-public class PhoneActivityMapper implements ActivityMapper {
-
+public class PhoneActivityMapper implements ActivityMapper
+{
 	private final ClientFactory clientFactory;
 
-	public PhoneActivityMapper(ClientFactory clientFactory) {
+	public PhoneActivityMapper(ClientFactory clientFactory)
+	{
 		this.clientFactory = clientFactory;
 	}
 
 	@Override
-	public Activity getActivity(Place place) {
-		//TODO place your activities here
+	public Activity getActivity(Place place)
+	{
+		if(place != null)
+		{
+			if(place instanceof DayAddPlace)
+			{
+				return new DayAddActivity(this.clientFactory);
+			}
+		}
+
 		return null;
 	}
 }

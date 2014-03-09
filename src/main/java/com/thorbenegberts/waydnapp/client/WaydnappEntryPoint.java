@@ -6,7 +6,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -18,21 +17,18 @@ import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 import com.googlecode.mgwt.ui.client.layout.MasterRegionHandler;
 import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
-
+import com.thorbenegberts.waydnapp.client.activities.home.HomePlace;
 import com.thorbenegberts.waydnapp.client.css.AppBundle;
 
 /**
- * @author Thorben Egberts
+ * @author thorbenegberts
  */
-public class MgwtAppEntryPoint implements EntryPoint
+public class WaydnappEntryPoint implements EntryPoint
 {
-
 	private void start()
 	{
-
 		//set viewport and other settings for mobile
 		MGWT.applySettings(MGWTSettings.getAppSetting());
-
 
 		final ClientFactory clientFactory = new ClientFactoryImpl();
 
@@ -40,12 +36,13 @@ public class MgwtAppEntryPoint implements EntryPoint
 		AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
 		final PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
 
-		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new com.thorbenegberts.waydnapp.client.activities.HomePlace());
+		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
 
 		if ((MGWT.getOsDetection().isTablet()))
 		{
 			// very nasty workaround because GWT does not corretly support
 			// @media
+			// TODO follow up on this some time
 			StyleInjector.inject(AppBundle.INSTANCE.css().getText());
 
 			createTabletDisplay(clientFactory);
@@ -55,8 +52,8 @@ public class MgwtAppEntryPoint implements EntryPoint
 			createPhoneDisplay(clientFactory);
 
 		}
-		historyHandler.handleCurrentHistory();
 
+		historyHandler.handleCurrentHistory();
 	}
 
 	private void createPhoneDisplay(ClientFactory clientFactory)
@@ -72,7 +69,6 @@ public class MgwtAppEntryPoint implements EntryPoint
 		activityManager.setDisplay(display);
 
 		RootPanel.get().add(display);
-
 	}
 
 	private void createTabletDisplay(ClientFactory clientFactory)
@@ -91,7 +87,7 @@ public class MgwtAppEntryPoint implements EntryPoint
 
 		AnimationMapper navAnimationMapper = new TabletNavAnimationMapper();
 
-		AnimatingActivityManager navActivityManager = new AnimatingActivityManager(navActivityMapper, navAnimationMapper, clientFactory.getEventBus());
+		AnimatingActivityManager navActivityManager = new AnimatingActivityManager( navActivityMapper, navAnimationMapper, clientFactory.getEventBus());
 
 		navActivityManager.setDisplay(navDisplay);
 
@@ -111,36 +107,23 @@ public class MgwtAppEntryPoint implements EntryPoint
 		mainContainer.setWidget(mainDisplay);
 
 		RootPanel.get().add(mainContainer);
-
 	}
 
 	@Override
 	public void onModuleLoad()
 	{
-
-		GWT.setUncaughtExceptionHandler(new UncaughtExceptionHandler()
-		{
-
-			@Override
-			public void onUncaughtException(Throwable e)
+		GWT.setUncaughtExceptionHandler(
+			new UncaughtExceptionHandler()
 			{
-				//TODO put in your own meaninful handler
-				Window.alert("uncaught: " + e.getMessage());
-				e.printStackTrace();
+				@Override
+				public void onUncaughtException(Throwable e)
+				{
+					//TODO put in your own meaninful handler
+					Window.alert("uncaught: " + e.getMessage());
+					e.printStackTrace();
+				}
+			});
 
-			}
-		});
-
-		new Timer()
-		{
-			@Override
-			public void run()
-			{
-				start();
-
-			}
-		}.schedule(1);
-
+		start();
 	}
-
 }

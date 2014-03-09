@@ -18,7 +18,7 @@ package com.thorbenegberts.waydnapp.client;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
 
-import com.thorbenegberts.waydnapp.client.activities.HomePlace.HomePlaceTokenizer;
+import com.thorbenegberts.waydnapp.client.activities.home.HomePlace.HomePlaceTokenizer;
 
 /**
  * @author Daniel Kurka
