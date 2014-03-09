@@ -1,18 +1,3 @@
-/*
- * Copyright 2010 Daniel Kurka
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package com.thorbenegberts.waydnapp.client;
 
 import com.google.gwt.activity.shared.ActivityMapper;
@@ -37,17 +22,17 @@ import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
 import com.thorbenegberts.waydnapp.client.css.AppBundle;
 
 /**
- * @author Daniel Kurka
- * 
+ * @author Thorben Egberts
  */
-public class MgwtAppEntryPoint implements EntryPoint {
+public class MgwtAppEntryPoint implements EntryPoint
+{
 
-	private void start() {
-		
-	  //set viewport and other settings for mobile
-    MGWT.applySettings(MGWTSettings.getAppSetting());
-		
-		
+	private void start()
+	{
+
+		//set viewport and other settings for mobile
+		MGWT.applySettings(MGWTSettings.getAppSetting());
+
 
 		final ClientFactory clientFactory = new ClientFactoryImpl();
 
@@ -57,13 +42,16 @@ public class MgwtAppEntryPoint implements EntryPoint {
 
 		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new com.thorbenegberts.waydnapp.client.activities.HomePlace());
 
-		if ((MGWT.getOsDetection().isTablet())) {
+		if ((MGWT.getOsDetection().isTablet()))
+		{
 			// very nasty workaround because GWT does not corretly support
 			// @media
 			StyleInjector.inject(AppBundle.INSTANCE.css().getText());
 
 			createTabletDisplay(clientFactory);
-		} else {
+		}
+		else
+		{
 			createPhoneDisplay(clientFactory);
 
 		}
@@ -71,7 +59,8 @@ public class MgwtAppEntryPoint implements EntryPoint {
 
 	}
 
-	private void createPhoneDisplay(ClientFactory clientFactory) {
+	private void createPhoneDisplay(ClientFactory clientFactory)
+	{
 		AnimatableDisplay display = GWT.create(AnimatableDisplay.class);
 
 		PhoneActivityMapper appActivityMapper = new PhoneActivityMapper(clientFactory);
@@ -86,7 +75,8 @@ public class MgwtAppEntryPoint implements EntryPoint {
 
 	}
 
-	private void createTabletDisplay(ClientFactory clientFactory) {
+	private void createTabletDisplay(ClientFactory clientFactory)
+	{
 		SimplePanel navContainer = new SimplePanel();
 		navContainer.getElement().setId("nav");
 		navContainer.getElement().addClassName("landscapeonly");
@@ -125,12 +115,15 @@ public class MgwtAppEntryPoint implements EntryPoint {
 	}
 
 	@Override
-	public void onModuleLoad() {
+	public void onModuleLoad()
+	{
 
-		GWT.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+		GWT.setUncaughtExceptionHandler(new UncaughtExceptionHandler()
+		{
 
 			@Override
-			public void onUncaughtException(Throwable e) {
+			public void onUncaughtException(Throwable e)
+			{
 				//TODO put in your own meaninful handler
 				Window.alert("uncaught: " + e.getMessage());
 				e.printStackTrace();
@@ -138,9 +131,11 @@ public class MgwtAppEntryPoint implements EntryPoint {
 			}
 		});
 
-		new Timer() {
+		new Timer()
+		{
 			@Override
-			public void run() {
+			public void run()
+			{
 				start();
 
 			}
