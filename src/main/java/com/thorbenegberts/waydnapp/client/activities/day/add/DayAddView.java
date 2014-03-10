@@ -1,4 +1,4 @@
-package com.thorbenegberts.waydnapp.client.activities.day;
+package com.thorbenegberts.waydnapp.client.activities.day.add;
 
 import com.thorbenegberts.waydnapp.client.View;
 

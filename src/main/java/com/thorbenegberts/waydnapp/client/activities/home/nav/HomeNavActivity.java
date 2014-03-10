@@ -1,16 +1,14 @@
-package com.thorbenegberts.waydnapp.client.activities.home;
+package com.thorbenegberts.waydnapp.client.activities.home.nav;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 import com.thorbenegberts.waydnapp.client.ClientFactory;
-import com.thorbenegberts.waydnapp.client.activities.home.nav.HomeNavPresenter;
-import com.thorbenegberts.waydnapp.client.activities.home.nav.HomeNavView;
 
 /**
  * @author thorbenegberts
  */
-public class HomeActivity extends MGWTAbstractActivity
+public class HomeNavActivity extends MGWTAbstractActivity
 {
 
 	private final ClientFactory clientFactory;
@@ -18,7 +16,7 @@ public class HomeActivity extends MGWTAbstractActivity
 	/**
 	 *
 	 */
-	public HomeActivity(ClientFactory clientFactory)
+	public HomeNavActivity(ClientFactory clientFactory)
 	{
 		this.clientFactory = clientFactory;
 	}

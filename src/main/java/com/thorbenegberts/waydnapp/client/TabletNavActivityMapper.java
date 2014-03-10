@@ -3,8 +3,10 @@ package com.thorbenegberts.waydnapp.client;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
-import com.thorbenegberts.waydnapp.client.activities.day.DayAddActivity;
-import com.thorbenegberts.waydnapp.client.activities.day.DayAddPlace;
+import com.thorbenegberts.waydnapp.client.activities.day.DayPlace;
+import com.thorbenegberts.waydnapp.client.activities.day.nav.DayNavActivity;
+import com.thorbenegberts.waydnapp.client.activities.home.nav.HomeNavActivity;
+import com.thorbenegberts.waydnapp.client.activities.home.nav.HomeNavPlace;
 
 public class TabletNavActivityMapper implements ActivityMapper
 {
@@ -18,12 +20,14 @@ public class TabletNavActivityMapper implements ActivityMapper
 	@Override
 	public Activity getActivity(Place place)
 	{
-		if(place != null)
+		if(place instanceof HomeNavPlace)
 		{
-			if(place instanceof DayAddPlace)
-			{
-				return new DayAddActivity(this.clientFactory);
-			}
+			return new HomeNavActivity(this.clientFactory);
+		}
+
+		if(place instanceof DayPlace)
+		{
+			return new DayNavActivity(this.clientFactory);
 		}
 
 		return null;

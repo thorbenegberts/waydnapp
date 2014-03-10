@@ -18,12 +18,16 @@ package com.thorbenegberts.waydnapp.client;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
 
-import com.thorbenegberts.waydnapp.client.activities.home.HomePlace.HomePlaceTokenizer;
+import com.thorbenegberts.waydnapp.client.activities.day.DayPlace;
+import com.thorbenegberts.waydnapp.client.activities.day.add.DayAddPlace;
+import com.thorbenegberts.waydnapp.client.activities.home.HomePlace;
+import com.thorbenegberts.waydnapp.client.activities.home.nav.HomeNavPlace;
 
 /**
- * @author Daniel Kurka
- * 
+ * @author thorbenegberts
  */
-@WithTokenizers({ HomePlaceTokenizer.class })
-public interface AppPlaceHistoryMapper extends PlaceHistoryMapper {
+@WithTokenizers({HomeNavPlace.HomeNavPlaceTokenizer.class, HomePlace.HomePlaceTokenizer.class, DayPlace.DayPlaceTokenizer.class, DayAddPlace.DayAddPlaceTokenizer.class})
+public interface AppPlaceHistoryMapper extends PlaceHistoryMapper
+{
+
 }

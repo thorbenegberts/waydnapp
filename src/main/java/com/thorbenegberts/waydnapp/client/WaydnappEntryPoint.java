@@ -17,7 +17,7 @@ import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 import com.googlecode.mgwt.ui.client.layout.MasterRegionHandler;
 import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
-import com.thorbenegberts.waydnapp.client.activities.home.HomePlace;
+import com.thorbenegberts.waydnapp.client.activities.home.nav.HomeNavPlace;
 import com.thorbenegberts.waydnapp.client.css.AppBundle;
 
 /**
@@ -36,7 +36,7 @@ public class WaydnappEntryPoint implements EntryPoint
 		AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
 		final PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
 
-		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
+		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomeNavPlace());
 
 		if ((MGWT.getOsDetection().isTablet()))
 		{

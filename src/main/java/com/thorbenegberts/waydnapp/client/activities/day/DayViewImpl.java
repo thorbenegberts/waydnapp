@@ -7,14 +7,14 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * Created by tegberts on 09.03.14.
  */
-public class DayAddViewImpl implements DayAddView
+public class DayViewImpl implements DayView
 {
 	private SimplePanel w = new SimplePanel();
-	private DayAddPresenter presenter;
+	private DayPresenter presenter;
 
-	public DayAddViewImpl()
+	public DayViewImpl()
 	{
-		w.add(new Label("day add view"));
+		w.add(new Label("All the 'day' stuff here"));
 	}
 
 	@Override
@@ -24,13 +24,13 @@ public class DayAddViewImpl implements DayAddView
 	}
 
 	@Override
-	public void setPresenter(DayAddPresenter presenter)
+	public void setPresenter(DayPresenter presenter)
 	{
 		this.presenter = presenter;
 	}
 
 	@Override
-	public DayAddPresenter getPresenter()
+	public DayPresenter getPresenter()
 	{
 		return presenter;
 	}

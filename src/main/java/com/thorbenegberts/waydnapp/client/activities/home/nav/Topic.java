@@ -1,4 +1,4 @@
-package com.thorbenegberts.waydnapp.client.activities.home;
+package com.thorbenegberts.waydnapp.client.activities.home.nav;
 
 import java.io.Serializable;
 

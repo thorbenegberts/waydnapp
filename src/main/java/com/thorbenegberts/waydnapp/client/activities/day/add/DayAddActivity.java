@@ -1,4 +1,4 @@
-package com.thorbenegberts.waydnapp.client.activities.day;
+package com.thorbenegberts.waydnapp.client.activities.day.add;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;

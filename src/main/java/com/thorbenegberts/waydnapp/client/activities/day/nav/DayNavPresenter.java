@@ -1,4 +1,4 @@
-package com.thorbenegberts.waydnapp.client.activities.day;
+package com.thorbenegberts.waydnapp.client.activities.day.nav;
 
 import com.thorbenegberts.waydnapp.client.ClientFactory;
 import com.thorbenegberts.waydnapp.client.Presenter;
@@ -6,7 +6,7 @@ import com.thorbenegberts.waydnapp.client.Presenter;
 /**
  * @author thorbenegberts
  */
-public class DayAddPresenter implements Presenter
+public class DayNavPresenter implements Presenter
 {
 
 	private ClientFactory clientFactory;

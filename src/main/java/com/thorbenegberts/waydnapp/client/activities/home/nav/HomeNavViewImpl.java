@@ -1,4 +1,4 @@
-package com.thorbenegberts.waydnapp.client.activities.home;
+package com.thorbenegberts.waydnapp.client.activities.home.nav;
 
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWT;
@@ -10,8 +10,7 @@ import com.googlecode.mgwt.ui.client.widget.celllist.BasicCell;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellListWithHeader;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
-import com.thorbenegberts.waydnapp.client.activities.day.add.DayAddPlace;
-import com.thorbenegberts.waydnapp.client.activities.home.nav.Topic;
+import com.thorbenegberts.waydnapp.client.activities.day.DayPlace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +18,15 @@ import java.util.List;
 /**
  * Created by tegberts on 09.03.14.
  */
-public class HomeViewImpl implements HomeView
+public class HomeNavViewImpl implements HomeNavView
 {
-	private HomePresenter presenter;
+	private HomeNavPresenter presenter;
 	private LayoutPanel main;
 	private HeaderButton forwardButton;
 	private HeaderPanel headerPanel;
 	private CellListWithHeader<Topic> cellList;
 
-	public HomeViewImpl()
+	public HomeNavViewImpl()
 	{
 		main = new LayoutPanel();
 
@@ -64,13 +63,12 @@ public class HomeViewImpl implements HomeView
 		scrollPanel.setScrollingEnabledX(false);
 		main.add(scrollPanel);
 
-		headerPanel.setCenter("test");
+		headerPanel.setCenter("Home");
 		forwardButton.setText("forward");
 
 
 		List<Topic> topicList = new ArrayList<Topic>();
-		topicList.add(new Topic("Test 1", 1));
-		topicList.add(new Topic("Test 2", 2));
+		topicList.add(new Topic("Day", 0));
 
 		cellList.getCellList().render(topicList);
 
@@ -80,20 +78,20 @@ public class HomeViewImpl implements HomeView
 				@Override
 				public void onCellSelected(CellSelectedEvent cellSelectedEvent)
 				{
-					getPresenter().getClientFactory().getPlaceController().goTo(new DayAddPlace());
+					getPresenter().getClientFactory().getPlaceController().goTo(new DayPlace());
 				}
 			}
 		);
 	}
 
 	@Override
-	public void setPresenter(HomePresenter presenter)
+	public void setPresenter(HomeNavPresenter presenter)
 	{
 		this.presenter = presenter;
 	}
 
 	@Override
-	public HomePresenter getPresenter()
+	public HomeNavPresenter getPresenter()
 	{
 		return presenter;
 	}

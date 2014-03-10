@@ -3,10 +3,16 @@ package com.thorbenegberts.waydnapp.client;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
-import com.thorbenegberts.waydnapp.client.activities.day.DayAddView;
-import com.thorbenegberts.waydnapp.client.activities.day.DayAddViewImpl;
+import com.thorbenegberts.waydnapp.client.activities.day.DayView;
+import com.thorbenegberts.waydnapp.client.activities.day.DayViewImpl;
+import com.thorbenegberts.waydnapp.client.activities.day.add.DayAddView;
+import com.thorbenegberts.waydnapp.client.activities.day.add.DayAddViewImpl;
+import com.thorbenegberts.waydnapp.client.activities.day.nav.DayNavView;
+import com.thorbenegberts.waydnapp.client.activities.day.nav.DayNavViewImpl;
 import com.thorbenegberts.waydnapp.client.activities.home.HomeView;
 import com.thorbenegberts.waydnapp.client.activities.home.HomeViewImpl;
+import com.thorbenegberts.waydnapp.client.activities.home.nav.HomeNavView;
+import com.thorbenegberts.waydnapp.client.activities.home.nav.HomeNavViewImpl;
 
 /**
  * @author thorbenegberts
@@ -16,7 +22,10 @@ public class ClientFactoryImpl implements ClientFactory
 	private EventBus eventBus;
 	private PlaceController placeController;
 	private DayAddView dayAddView;
-	private HomeViewImpl homeView;
+	private HomeNavView homeNavView;
+	private DayView dayView;
+	private HomeView homeView;
+	private DayNavView dayNavView;
 
 	public ClientFactoryImpl()
 	{
@@ -49,6 +58,17 @@ public class ClientFactoryImpl implements ClientFactory
 	}
 
 	@Override
+	public HomeNavView getHomeNavView()
+	{
+		if(homeNavView == null)
+		{
+			homeNavView = new HomeNavViewImpl();
+		}
+
+		return homeNavView;
+	}
+
+	@Override
 	public HomeView getHomeView()
 	{
 		if(homeView == null)
@@ -57,5 +77,27 @@ public class ClientFactoryImpl implements ClientFactory
 		}
 
 		return homeView;
+	}
+
+	@Override
+	public DayView getDayView()
+	{
+		if(dayView == null)
+		{
+			dayView = new DayViewImpl();
+		}
+
+		return dayView;
+	}
+
+	@Override
+	public DayNavView getDayNavView()
+	{
+		if(dayNavView == null)
+		{
+			dayNavView = new DayNavViewImpl();
+		}
+
+		return dayNavView;
 	}
 }

@@ -1,4 +1,4 @@
-package com.thorbenegberts.waydnapp.client.activities.day;
+package com.thorbenegberts.waydnapp.client.activities.day.add;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
@@ -8,7 +8,7 @@ import com.google.gwt.place.shared.PlaceTokenizer;
  */
 public class DayAddPlace extends Place
 {
-	public static class DayAddTokenizer implements PlaceTokenizer<DayAddPlace>
+	public static class DayAddPlaceTokenizer implements PlaceTokenizer<DayAddPlace>
 	{
 		@Override
 		public DayAddPlace getPlace(String token)

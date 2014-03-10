@@ -4,8 +4,8 @@ package com.thorbenegberts.waydnapp.client;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
-import com.thorbenegberts.waydnapp.client.activities.day.DayAddActivity;
-import com.thorbenegberts.waydnapp.client.activities.day.DayAddPlace;
+import com.thorbenegberts.waydnapp.client.activities.day.add.DayAddActivity;
+import com.thorbenegberts.waydnapp.client.activities.day.add.DayAddPlace;
 
 /**
  * @author thorbenegberts

@@ -1,4 +1,4 @@
-package com.thorbenegberts.waydnapp.client.activities.home;
+package com.thorbenegberts.waydnapp.client.activities.day.nav;
 
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWT;
@@ -19,15 +19,15 @@ import java.util.List;
 /**
  * Created by tegberts on 09.03.14.
  */
-public class HomeViewImpl implements HomeView
+public class DayNavViewImpl implements DayNavView
 {
-	private HomePresenter presenter;
+	private DayNavPresenter presenter;
 	private LayoutPanel main;
 	private HeaderButton forwardButton;
 	private HeaderPanel headerPanel;
 	private CellListWithHeader<Topic> cellList;
 
-	public HomeViewImpl()
+	public DayNavViewImpl()
 	{
 		main = new LayoutPanel();
 
@@ -64,36 +64,38 @@ public class HomeViewImpl implements HomeView
 		scrollPanel.setScrollingEnabledX(false);
 		main.add(scrollPanel);
 
-		headerPanel.setCenter("test");
+		headerPanel.setCenter("Day");
 		forwardButton.setText("forward");
 
 
 		List<Topic> topicList = new ArrayList<Topic>();
-		topicList.add(new Topic("Test 1", 1));
-		topicList.add(new Topic("Test 2", 2));
+		topicList.add(new Topic("Add day", 0));
 
 		cellList.getCellList().render(topicList);
 
 		cellList.getCellList().addCellSelectedHandler(
-			new CellSelectedHandler()
-			{
-				@Override
-				public void onCellSelected(CellSelectedEvent cellSelectedEvent)
+				new CellSelectedHandler()
 				{
-					getPresenter().getClientFactory().getPlaceController().goTo(new DayAddPlace());
+					@Override
+					public void onCellSelected(CellSelectedEvent cellSelectedEvent)
+					{
+						if(cellSelectedEvent.getIndex() == 0)
+						{
+							getPresenter().getClientFactory().getPlaceController().goTo(new DayAddPlace());
+						}
+					}
 				}
-			}
 		);
 	}
 
 	@Override
-	public void setPresenter(HomePresenter presenter)
+	public void setPresenter(DayNavPresenter presenter)
 	{
 		this.presenter = presenter;
 	}
 
 	@Override
-	public HomePresenter getPresenter()
+	public DayNavPresenter getPresenter()
 	{
 		return presenter;
 	}
